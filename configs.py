@@ -4,6 +4,9 @@ from dacapo.experiments.tasks import DistanceTaskConfig
 
 import torch
 
+input_voxel_size = (8, 8, 8)
+output_voxel_size = (4, 4, 4)
+
 channels = [
     "ecs",  # extra cellular space
     "plasma_membrane",
@@ -23,8 +26,8 @@ channels = [
 
 architecture_config = CNNectomeUNetConfig(
     name="CellMapArchitecture",
-    input_shape=Coordinate(216, 216, 216),  # can be changed
-    eval_shape_increase=Coordinate(72, 72, 72),  # can be changed
+    input_shape=Coordinate(216, 216, 216),  # can be changed (output size approx 96x96x96)
+    eval_shape_increase=Coordinate(72, 72, 72),  # can be changed (output size approx 168x168x168)
     fmaps_in=1,
     num_fmaps=12,
     fmaps_out=72,
